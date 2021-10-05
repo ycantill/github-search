@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
+import useOctokit from "./hooks/octokit";
+import SearchBar from './components/SearchBar';
+import RepositoriesList from './components/RepositoriesList';
 
 function App() {
+  const octokit = useOctokit();
+  const [repositories, setRepositories] = useState([]);
+  const [searchParams, setSearchParams] = useState({});
+
+  async function search() {
+    const { topic = '', stars = 0 } = searchParams;
+    const q = `topic:${topic}+stars:>=${stars}`;
+    const { data: { items: repositories } } = await octokit.rest.search.repos({ q, sort: 'stars', per_page: 10 });
+
+    setRepositories(repositories);
+  }
+
+  function onSearchParamsChange(event) {
+      setSearchParams((previousSearchParams) => {
+          return Object.assign({}, previousSearchParams, { [event.target.name]: event.target.value });
+      });
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App_container">
+      <h1>Github repositories search</h1>
+      <SearchBar search={search} onSearchParamsChange={onSearchParamsChange}></SearchBar>
+      <RepositoriesList repositories={repositories}></RepositoriesList>
     </div>
   );
 }

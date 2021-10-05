@@ -1,0 +1,11 @@
+.SearchBar_container {
+    display: block;
+}
+
+.SearchBar_container * {
+    margin-right: 10px;
+}
+
+.SearchBar_container input {
+    margin-left: 10px;
+}
