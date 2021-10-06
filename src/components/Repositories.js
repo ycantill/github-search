@@ -1,4 +1,4 @@
-export default function RepositoriesList(props) {
+export const Repositories = (props) => {
   const { repositories } = props;
 
   return (

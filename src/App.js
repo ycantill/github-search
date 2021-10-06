@@ -1,10 +1,19 @@
-import './App.css';
 import { useState } from "react";
 import useOctokit from "./hooks/octokit";
-import SearchBar from './components/SearchBar';
-import RepositoriesList from './components/RepositoriesList';
+import { SearchBar } from './components/SearchBar';
+import { Repositories } from './components/Repositories';
+import { createUseStyles } from 'react-jss'
+
+const useStyles = createUseStyles({
+  app: {
+    display: 'flex',
+    flexDirection: 'column',
+    paddingLeft: '20px'
+  }
+});
 
 function App() {
+  const classes = useStyles();
   const octokit = useOctokit();
   const [repositories, setRepositories] = useState([]);
   const [searchParams, setSearchParams] = useState({});
@@ -24,10 +33,10 @@ function App() {
   }
 
   return (
-    <div className="App_container">
+    <div className={classes.app}>
       <h1>Github repositories search</h1>
       <SearchBar search={search} onSearchParamsChange={onSearchParamsChange}></SearchBar>
-      <RepositoriesList repositories={repositories}></RepositoriesList>
+      <Repositories repositories={repositories}></Repositories>
     </div>
   );
 }

@@ -1,9 +1,23 @@
-import './SearchBar.css'
-export default function SearchBar(props) {
+import { createUseStyles } from 'react-jss'
+
+const useStyles = createUseStyles({
+  searchBar: {
+    display: 'block',
+    '& *': {
+      marginRight: '10px'
+    },
+    '& input': {
+      marginLeft: '10px'
+    }
+  }
+});
+
+export const SearchBar = (props) => {
   const { search, onSearchParamsChange } = props;
+  const classes = useStyles();
 
   return (
-    <div className="SearchBar_container">
+    <div className={classes.searchBar}>
       <label>Topic:
         <input name="topic" type="text" onChange={onSearchParamsChange}></input>
       </label>

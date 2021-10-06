@@ -1,8 +1,8 @@
 import { Octokit } from "octokit";
 import { useEffect, useState } from "react";
-const AUTH_TOKEN = `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`;
 
 export default function useOctokit() {
+  const AUTH_TOKEN = process.env.REACT_APP_GITHUB_TOKEN || '';
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
