@@ -1,7 +1,10 @@
-Before run the project please create a personal github token with public repository permission https://github.com/settings/tokens
-Then create a environment variable REACT_APP_GITHUB_TOKEN with the previous token created as value.
+## Before run
 
-## Available Scripts
+Please create a personal github token with public repository permission https://github.com/settings/tokens
+
+Then create an environment variable called REACT_APP_GITHUB_TOKEN with the previous token created as value.
+
+## Run the project
 
 In the project directory, you can run:
 
