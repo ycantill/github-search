@@ -1,0 +1,1 @@
+export type SearchParams = { topic: string, stars: number };
