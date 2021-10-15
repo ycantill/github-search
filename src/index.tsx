@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { GithubSearch } from './components/GithubSearch';
+import { OctokitAuth } from './components/OctokitAuth';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <OctokitAuth>
+      <GithubSearch/>
+    </OctokitAuth>
   </React.StrictMode>,
   document.getElementById('root')
 );

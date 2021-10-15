@@ -6,9 +6,9 @@ export const Repositories = (props) => {
       <ol>
         {repositories.map((repository) => {
           return <li key={repository.id}>
-            {`full name: ${repository.full_name}`}
+            {`full name: ${repository.name}`}
             <br></br>
-            {`stars: ${repository.stargazers_count}`}
+            {`stars: ${repository.stars}`}
             </li>;
         })}
       </ol>

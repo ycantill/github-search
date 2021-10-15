@@ -13,7 +13,7 @@ const useStyles = createUseStyles({
 });
 
 export const SearchBar = (props) => {
-  const { search, onSearchParamsChange } = props;
+  const { searchRepositories, onSearchParamsChange } = props;
   const classes = useStyles();
 
   return (
@@ -24,7 +24,7 @@ export const SearchBar = (props) => {
       <label>Minimun stars:
         <input name="stars" type="number" onChange={onSearchParamsChange}></input>
       </label>
-      <button onClick={search}>Search</button>
+      <button onClick={searchRepositories}>Search</button>
     </div>
   );
 }
